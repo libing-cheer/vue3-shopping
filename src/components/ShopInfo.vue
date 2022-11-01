@@ -12,7 +12,9 @@
         <span class="shop__content__tag">
           <span class="shop__content__text">月售：{{ item.sales }}</span>
           <span class="shop__content__text">起送：{{ item.expressLimit }}</span>
-          <span class="shop__content__text">基础运费：{{ item.expressPrice }}</span>
+          <span class="shop__content__text"
+            >基础运费：{{ item.expressPrice }}</span
+          >
         </span>
       </div>
       <p class="shop__content__highlight">{{ item.slogan }}</p>
@@ -34,6 +36,7 @@ export default {
     margin-right: 0.16rem;
     width: 0.56rem;
     height: 0.56rem;
+    border-radius: 0.28rem;
   }
   &__content {
     flex: 1;

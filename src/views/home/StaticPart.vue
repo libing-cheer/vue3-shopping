@@ -8,7 +8,7 @@
     <div class="banner">
       <img
         class="banner__img"
-        src="http://www.dell-lee.com/imgs/vue3/banner.jpg"
+        src="https://pic.ntimg.cn/file/20221005/32998011_120000395105_2.jpg"
         alt=""
       />
     </div>
@@ -73,7 +73,7 @@ export default {
 .banner {
   height: 0;
   overflow: hidden;
-  padding-bottom: 25.4%;
+  padding-bottom: 28%;
   &__img {
     width: 100%;
   }

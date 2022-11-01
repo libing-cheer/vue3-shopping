@@ -32,17 +32,17 @@
             class="products__number__minus"
             @click="
               () => {
-                changeCartItemInfo(shopId, item._id, item, -1);
+                changeCartItem(shopId, item._id, item, -1, shopName);
               }
             "
             >-</span
           >
-          {{ cartList?.[shopId]?.[item._id]?.count || 0 }}
+          {{ cartList?.[shopId]?.productList?.[item._id]?.count || 0 }}
           <span
             class="products__number__plus"
             @click="
               () => {
-                changeCartItemInfo(shopId, item._id, item, 1);
+                changeCartItem(shopId, item._id, item, 1, shopName);
               }
             "
             >+</span
@@ -57,7 +57,8 @@
 import { reactive, toRefs, ref, watchEffect } from "vue";
 import { get } from "@/utils/request";
 import { useRoute } from "vue-router";
-import { useCommonCartEffect } from './commonCartEffect';
+import { useStore } from "vuex";
+import { useCommonCartEffect } from "./commonCartEffect";
 const categories = [
   { name: "全部商品", tab: "all" },
   { name: "秒杀", tab: "seckill" },
@@ -92,15 +93,31 @@ const useCurrentListEffect = (currentTab, shopId) => {
   const { list } = toRefs(content);
   return { list };
 };
+// 购物车相关逻辑
+const useCartEffect = () => {
+  const store = useStore();
+  const { cartList, changeCartItemInfo } = useCommonCartEffect();
 
+  const changeShopName = (shopId, shopName) => {
+    store.commit("changeShopName", { shopId, shopName });
+  };
+  const changeCartItem = (shopId, productId, item, num, shopName) => {
+    changeCartItemInfo(shopId, productId, item, num);
+    changeShopName(shopId, shopName);
+  };
+  return { cartList, changeCartItem };
+};
 export default {
   name: "Content",
+  props: ["shopName"],
   setup() {
     const route = useRoute();
     const shopId = route.params.id;
+
     const { currentTab, handleTabClick } = useTabEffect();
     const { list } = useCurrentListEffect(currentTab, shopId);
-    const { cartList, changeCartItemInfo } = useCommonCartEffect();
+
+    const { cartList, changeCartItem } = useCartEffect();
     return {
       shopId,
       categories,
@@ -108,7 +125,7 @@ export default {
       list,
       handleTabClick,
       cartList,
-      changeCartItemInfo
+      changeCartItem,
     };
   },
 };
