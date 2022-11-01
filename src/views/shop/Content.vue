@@ -37,7 +37,7 @@
             "
             >-</span
           >
-          {{ cartList?.[shopId]?.productList?.[item._id]?.count || 0 }}
+          {{ getProductCartCount(shopId, item._id) }}
           <span
             class="products__number__plus"
             @click="
@@ -105,7 +105,11 @@ const useCartEffect = () => {
     changeCartItemInfo(shopId, productId, item, num);
     changeShopName(shopId, shopName);
   };
-  return { cartList, changeCartItem };
+
+  const getProductCartCount = (shopId, productId) => {
+    return cartList?.[shopId]?.productList?.[productId]?.count || 0;
+  };
+  return { cartList, changeCartItem, getProductCartCount };
 };
 export default {
   name: "Content",
@@ -117,7 +121,7 @@ export default {
     const { currentTab, handleTabClick } = useTabEffect();
     const { list } = useCurrentListEffect(currentTab, shopId);
 
-    const { cartList, changeCartItem } = useCartEffect();
+    const { cartList, changeCartItem, getProductCartCount } = useCartEffect();
     return {
       shopId,
       categories,
@@ -126,6 +130,7 @@ export default {
       handleTabClick,
       cartList,
       changeCartItem,
+      getProductCartCount,
     };
   },
 };

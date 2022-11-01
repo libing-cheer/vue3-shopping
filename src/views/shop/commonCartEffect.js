@@ -1,8 +1,8 @@
 import { useStore } from "vuex";
-import { toRefs } from "vue";
+// import { toRefs } from "vue";
 export const useCommonCartEffect = () => {
   const store = useStore();
-  const { cartList } = toRefs(store.state);
+  const { cartList } = store.state;
 
   const changeCartItemInfo = (shopId, productId, productInfo, num) => {
     store.commit("changeCartItemInfo", {
