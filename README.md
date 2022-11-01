@@ -46,6 +46,12 @@ yarn lint
 }
 ```
 
+### 首页
+
+![home](/src/assets/img/home.jpeg)
+
+![cart](/src/assets/img/cart.jpeg)
+
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
