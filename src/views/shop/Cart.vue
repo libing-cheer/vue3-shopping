@@ -81,7 +81,9 @@
         >
       </div>
       <div class="check__btn">
-        <router-link :to="{ name: 'Home' }">去结算</router-link>
+        <router-link :to="{ path: `/OrderConfirmation/${shopId}` }">
+          去结算
+        </router-link>
       </div>
     </div>
   </div>
@@ -89,40 +91,12 @@
 
 <script>
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { useCommonCartEffect } from "./commonCartEffect";
+import { useCommonCartEffect } from "@/effects/cartEffect";
 // 获取购物车信息逻辑
 const useCartComputedEffect = (shopId) => {
   const store = useStore();
-  const cartList = store.state.cartList;
-
-  const calculations = computed(() => {
-    const productList = cartList[shopId]?.productList;
-    const result = { total: 0, prices: 0, allChecked: true };
-
-    if (productList) {
-      for (const i in productList) {
-        const product = productList[i];
-        result.total += product.count;
-
-        if (product.check) {
-          result.prices += product.count * product.prices;
-        }
-
-        if (product.count > 0 && !product.check) {
-          result.allChecked = false;
-        }
-      }
-    }
-    result.prices = result.prices.toFixed(2);
-    return result;
-  });
-  const productList = computed(() => {
-    const productList = cartList[shopId]?.productList;
-    return productList;
-  });
-
   const changeCartItemCheck = (shopId, productId) => {
     store.commit("changeCartItemCheck", {
       shopId,
@@ -138,8 +112,6 @@ const useCartComputedEffect = (shopId) => {
     store.commit("setCartItemChecked", { shopId });
   };
   return {
-    calculations,
-    productList,
     changeCartItemCheck,
     cleanCartProduct,
     setCartItemChecked,
@@ -162,14 +134,10 @@ export default {
     const route = useRoute();
     const shopId = route.params.id;
 
-    const {
-      calculations,
-      productList,
-      changeCartItemCheck,
-      cleanCartProduct,
-      setCartItemChecked,
-    } = useCartComputedEffect(shopId);
-    const { changeCartItemInfo } = useCommonCartEffect();
+    const { changeCartItemCheck, cleanCartProduct, setCartItemChecked } =
+      useCartComputedEffect(shopId);
+    const { changeCartItemInfo, productList, calculations } =
+      useCommonCartEffect(shopId);
     const { showCart, handleCartShowChange } = useToggleCartEffect();
 
     return {

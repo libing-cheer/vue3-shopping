@@ -4,7 +4,7 @@
       <StaticPart />
       <Nearby />
     </div>
-    <Docker />
+    <Docker :pageIndex="0" />
     <router-view />
   </div>
 </template>
