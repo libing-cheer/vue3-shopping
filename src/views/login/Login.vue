@@ -28,7 +28,7 @@
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { reactive } from "vue";
-
+import { post } from "@/utils/request";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 export default {
   name: "Login",
@@ -38,19 +38,18 @@ export default {
       password: "",
     });
     const router = useRouter();
-    const handleLogin = () => {
-      const { username, password } = data;
-      const params = { username, password };
-      const loginAPIUrl = `https://www.fastmock.site/mock/ea53b90d8b9f8c211a7a05410b478c97/elemo/api/user/login`;
-      axios
-        .post(loginAPIUrl, params)
-        .then(() => {
+    const handleLogin = async () => {
+      try {
+        const { username, password } = data;
+        const params = { username, password };
+        const result = await post("/api/user/login", params);
+        if (result?.status) {
           localStorage.isLogin = true;
           router.push({ name: "Home" });
-        })
-        .catch(() => {
-          console.log("登录失败");
-        });
+        }
+      } catch (e) {
+        console.log(e, "登录失败");
+      }
     };
     const handleRegisterClick = () => {
       router.push({ name: "Register" });

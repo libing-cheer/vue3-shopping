@@ -32,7 +32,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../style/variablse.scss";
+@import "../style/variablse.scss";
 .docker {
   display: flex;
   position: absolute;

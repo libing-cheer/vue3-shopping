@@ -48,9 +48,9 @@ yarn lint
 
 ### 首页
 
-![home](/src/assets/img/home.jpeg)
+![home](https://github.com/libing-cheer/vue3-shopping/raw/master/src/assets/img/home.jpeg)
 
-![cart](/src/assets/img/cart.jpeg)
+![cart](https://github.com/libing-cheer/vue3-shopping/raw/master/src/assets/img/cart.jpeg)
 
 ### Customize configuration
 

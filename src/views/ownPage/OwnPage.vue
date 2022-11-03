@@ -2,7 +2,7 @@
   <Docker :pageIndex="3" />
 </template>
 <script>
-import Docker from "../home/Docker.vue";
+import Docker from "../../components/Docker";
 export default {
   name: "OrderList",
   components: { Docker },

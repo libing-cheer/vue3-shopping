@@ -23,47 +23,45 @@
           >
         </div>
       </div>
-      <template v-for="item in productList" :key="item._id">
-        <div v-if="item.count" class="products__item">
-          <div
-            class="products__item__checked iconfont"
-            v-html="item.check ? '&#xe69b;' : '&#xe619;'"
-            @click="() => changeCartItemCheck(shopId, item._id)"
-          ></div>
-          <img class="products__item__img" :src="item.imgUrl" alt="" />
-          <div class="products__item__detail">
-            <h4 class="products__item__title">{{ item.name }}</h4>
-            <p class="products__item__price">
-              <span class="products__item__price__yen">&yen;</span
-              >{{ item.prices }}
-              <span class="products__item__price__origin"
-                >&yen;{{ item.oldPrices }}</span
-              >
-            </p>
-          </div>
-          <div class="products__number">
-            <span
-              class="products__number__minus"
-              @click="
-                () => {
-                  changeCartItemInfo(shopId, item._id, item, -1);
-                }
-              "
-              >-</span
+      <div v-for="item in productList" :key="item._id" class="products__item">
+        <div
+          class="products__item__checked iconfont"
+          v-html="item.check ? '&#xe69b;' : '&#xe619;'"
+          @click="() => changeCartItemCheck(shopId, item._id)"
+        ></div>
+        <img class="products__item__img" :src="item.imgUrl" alt="" />
+        <div class="products__item__detail">
+          <h4 class="products__item__title">{{ item.name }}</h4>
+          <p class="products__item__price">
+            <span class="products__item__price__yen">&yen;</span
+            >{{ item.prices }}
+            <span class="products__item__price__origin"
+              >&yen;{{ item.oldPrices }}</span
             >
-            {{ item.count || 0 }}
-            <span
-              class="products__number__plus"
-              @click="
-                () => {
-                  changeCartItemInfo(shopId, item._id, item, 1);
-                }
-              "
-              >+</span
-            >
-          </div>
+          </p>
         </div>
-      </template>
+        <div class="products__number">
+          <span
+            class="products__number__minus"
+            @click="
+              () => {
+                changeCartItemInfo(shopId, item._id, item, -1);
+              }
+            "
+            >-</span
+          >
+          {{ item.count || 0 }}
+          <span
+            class="products__number__plus"
+            @click="
+              () => {
+                changeCartItemInfo(shopId, item._id, item, 1);
+              }
+            "
+            >+</span
+          >
+        </div>
+      </div>
     </div>
     <div class="check">
       <div class="check__icon">
@@ -80,7 +78,7 @@
           >&yen; {{ calculations.prices }}</span
         >
       </div>
-      <div class="check__btn">
+      <div class="check__btn" v-show="calculations.total">
         <router-link :to="{ path: `/OrderConfirmation/${shopId}` }">
           去结算
         </router-link>
