@@ -58,7 +58,7 @@ const useMakeOrderEffect = (shopId) => {
         isCanceled,
         addressId: 1,
       };
-      const result = await post("/api/order", params);
+      const result = await post("/api/createOrder", params);
 
       if (result?.status) {
         store.commit("clearCartData", { shopId });
