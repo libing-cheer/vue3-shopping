@@ -43,7 +43,7 @@ export default {
   &__header {
     position: relative;
     line-height: 0.24rem;
-    padding-top: 0.26rem;
+    padding-top: 0.2rem;
     color: $bgColor;
     text-align: center;
     font-size: 0.16rem;

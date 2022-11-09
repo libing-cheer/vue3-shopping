@@ -110,7 +110,7 @@ export default {
   height: 0.49rem;
   line-height: 0.49rem;
   background: #ffffff;
-  border-top: 1px solid $content-bgColor;
+  border-top: 0.01rem solid $content-bgColor;
   &__price {
     flex: 1;
     text-indent: 0.24rem;

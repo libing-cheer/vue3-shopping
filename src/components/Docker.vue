@@ -38,11 +38,11 @@ export default {
   position: absolute;
   padding: 0.18rem;
   box-sizing: border-box;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 0.49rem;
-  border-top: 1px solid $content-bgColor;
+  border-top: 0.01rem solid $content-bgColor;
   &__item {
     flex: 1;
     text-align: center;
@@ -51,7 +51,7 @@ export default {
     }
   }
   &__title {
-    font-size: 20px;
+    font-size: 0.2rem;
     transform: scale(0.5, 0.5);
     transform-origin: center top;
   }
