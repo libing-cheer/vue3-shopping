@@ -91,7 +91,9 @@ export default {
   background: rgb(248, 248, 248);
 }
 .title {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 2;
   line-height: 0.44rem;
   color: $content-font-color;
   text-align: center;

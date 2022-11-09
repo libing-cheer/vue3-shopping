@@ -23,7 +23,6 @@ export default {
       const res = await get(`/api/list`);
       if (res?.status && res.result) {
         nearbyList.data = res.result || [];
-        console.log(nearbyList);
       }
     };
     getShopList();
