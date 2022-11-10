@@ -4,7 +4,7 @@
       <div class="benefit__header__title">我的权益</div>
       <div class="benefit__header__all">
         <div>全部</div>
-        <div class="iconfont order__header__icon">&#xe6db;</div>
+        <div class="iconfont benefit__header__icon">&#xe6db;</div>
       </div>
     </div>
     <div class="benefit__content">
