@@ -2,7 +2,7 @@
   <div>
     <div class="position">北京理工大学国防科技园2号楼10层</div>
     <div class="search">
-      <span class="seacrh__icon"></span>
+      <span class="search__icon iconfont">&#xeb86;</span>
       <span class="search__text">山姆会员商店优惠商品</span>
     </div>
     <div class="banner">
@@ -54,18 +54,22 @@ export default {
   @include ellipsis;
 }
 .search {
+  position: relative;
   margin-bottom: 0.12rem;
   height: 0.32rem;
   line-height: 0.32rem;
   background: #f5f5f5;
   color: #b7b7b7;
   border-radius: 0.16rem;
-  .seacrh__icon {
-    font-size: 0.2rem;
+  .search__icon {
+    position: absolute;
+    font-size: 0.16rem;
     display: inline-block;
     padding: 0 0.1rem 0.16rem;
   }
   &__text {
+    position: absolute;
+    left: .3rem;
     display: inline-block;
     font-size: 0.14rem;
   }
